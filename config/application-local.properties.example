@@ -1,0 +1,31 @@
+# Copy outside source control, or use scripts/init-local.ps1 to generate this file.
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/hkuer_mesh_dev?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+spring.datasource.username=hkuer_mesh
+spring.datasource.password=REPLACE_WITH_DATABASE_PASSWORD
+spring.data.redis.host=127.0.0.1
+spring.data.redis.port=6379
+spring.data.redis.database=2
+spring.data.redis.password=
+jwt.secret=REPLACE_WITH_AT_LEAST_64_RANDOM_CHARACTERS
+mesh.dev.root=.local/mesh
+mesh.dev.admin-password=REPLACE_WITH_RANDOM_ADMIN_PASSWORD
+
+# Explicit local development mode. No real mail, moderation, translation or OSS.
+# Keep the application bound to localhost while using these development adapters.
+mesh.mail-mode=local
+mesh.cloud-mode=local
+
+# To use real cloud integrations, set the two modes above to aliyun and configure:
+# aliyun.accessKeyId=
+# aliyun.accessKeySecret=
+# aliyun.green.endpoint=
+# aliyun.green.region-id=
+# aliyun.mt.endpoint=
+# aliyun.oss.endpoint=
+# aliyun.oss.bucket-name=
+# aliyun.oss.access-key-id=
+# aliyun.oss.access-key-secret=
+# aliyun.mail.accessKeyId=
+# aliyun.mail.accessKeySecret=
+# aliyun.mail.accountName=
+# aliyun.mail.regionId=

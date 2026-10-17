@@ -1,0 +1,69 @@
+# Default local development environment for IDEA and java -jar.
+# Private credentials are stored in .local/mesh/application-local.properties.
+# Reuse MySQL 3306 and Redis 6379; see the repository README for database setup.
+server:
+  port: 9091
+  address: 127.0.0.1
+spring:
+  application:
+    name: hkuer-mesh
+  profiles:
+    active: mesh
+  config:
+    import: "file:${HKUER_LOCAL_CONFIG:.local/mesh/application-local.properties}"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+  data:
+    redis:
+      database: 2
+      timeout: 3s
+  flyway:
+    enabled: true
+    locations: classpath:db/mesh
+    clean-disabled: true
+    baseline-on-migrate: false
+  rabbitmq:
+    dynamic: false
+    listener:
+      simple:
+        auto-startup: false
+      direct:
+        auto-startup: false
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+jwt:
+  expiration: 7200000
+  refresh-expiration: 604800000
+  cookie:
+    domain: ''
+    secure: false
+    same-site: Lax
+    access-name: mesh_access_token
+    refresh-name: mesh_refresh_token
+mesh:
+  cloud-mode: aliyun
+  mail-mode: aliyun
+  redis-prefix: 'hkuer:mesh:dev:'
+  messaging-enabled: false
+  local-outbox: true
+  attachment-cleanup-enabled: false
+  worker-id: 1
+  datacenter-id: 1
+pay:
+  mzf:
+    api-url: http://127.0.0.1:1/disabled-payment
+    pid: disabled-local
+    key: disabled-local
+    notify-url: http://127.0.0.1:9091/api/pay/notify
+    return-url: http://localhost:5174/user/pay-success
+logging:
+  level:
+    com.hkuer.hkuer: INFO

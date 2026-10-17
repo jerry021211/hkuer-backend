@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hkuer.hkuer.mapper.userface.TeacherMapper">
+
+    <select id="selectTeacherListWithUserRating" resultType="com.hkuer.hkuer.entity.PO.Teacher">
+        SELECT
+            t.*,
+            r.score AS userRating
+        FROM teacher t
+                 LEFT JOIN ratings r ON t.id = r.target_id AND r.user_id = #{userId}
+
+            ${ew.customSqlSegment}
+    </select>
+
+</mapper>

@@ -1,0 +1,42 @@
+# Credentials, databases, uploads and machine-local state
+.local/
+.env
+.env.*
+!.env.example
+!.env.mesh
+application-local.*
+!config/application-local.properties.example
+application-pro.yml
+application-prod.yml
+secrets.json
+mysql-client.ini
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+dump.rdb
+appendonly.aof
+uploads/
+logs/
+*.log
+# Dependencies and build output
+node_modules/
+target/
+dist/
+dist-ssr/
+coverage/
+*.class
+*.jar
+*.war
+*.tsbuildinfo
+# IDE and temporary files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.swp
+*.zip
